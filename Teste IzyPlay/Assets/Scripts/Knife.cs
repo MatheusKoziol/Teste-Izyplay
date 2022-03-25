@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Knife : MonoBehaviour
 {
-
+    #region Hidden Variables
     Rigidbody rb;
+    bool firstInput;
+    [HideInInspector] public bool lockRotation;
+    #endregion
+
+    #region Exposed Variables
+    [Header("Movement Parameters")]
     public float impulseForceUp;
     public float impulseForceForward;
     public float torqueForce;
-    public bool lockRotation;
     public float minHeight;
-
-    public bool firstInput;
+    #endregion
 
 
     void Start()
@@ -20,7 +24,6 @@ public class Knife : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (lockRotation)
@@ -61,8 +64,8 @@ public class Knife : MonoBehaviour
 
     public void BounceImpulse()
     {
-        rb.AddForce(Vector3.up * impulseForceUp/2, ForceMode.Impulse);
-        rb.AddForce(Vector3.right * -impulseForceForward/2, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * impulseForceUp/4, ForceMode.Impulse);
+        rb.AddForce(Vector3.right * -impulseForceForward/4, ForceMode.Impulse);
         rb.AddTorque(transform.forward * torqueForce);
     }
 

@@ -4,24 +4,20 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-
-    public GameObject boardHalf1;
-    public GameObject boardHalf2;
-
+    #region Hidden Variables
     BoxCollider boxCollider;
     MeshRenderer mesh;
+    #endregion
 
-    // Start is called before the first frame update
+    #region Exposed Variables
+    public GameObject boardHalf1;
+    public GameObject boardHalf2;
+    #endregion
+
     void Start()
     {
         boxCollider = GetComponent<BoxCollider>();
         mesh = GetComponent<MeshRenderer>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter(Collider other)

@@ -10,13 +10,8 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text scoreText;
     public GameObject victoryUI;
+    public TMP_Text victoryUIScoreText;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -29,12 +24,14 @@ public class UIManager : MonoBehaviour
     {
         scoreText.gameObject.SetActive(false);
         victoryUI.SetActive(true);
+        victoryUIScoreText.text = "SCORE: " + ScoreManager.Instance.score.ToString();
     }
 
 
     public void ChangeScene(string newSceneName)
     {
         SceneManager.LoadScene(newSceneName);
+        ScoreManager.Instance.score = 0;
         Time.timeScale = 1;
     }
 }
